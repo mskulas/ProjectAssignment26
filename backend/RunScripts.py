@@ -1,3 +1,4 @@
+import base64
 import json
 import subprocess
 import Scripts
@@ -42,11 +43,24 @@ def RunScripts():
     for name, script in scripts.items():
         print(f"\n--- {name} ---")
 
+        command = (
+            "$ErrorActionPreference = 'Stop'\n"
+            "$ProgressPreference = 'SilentlyContinue'\n"
+            "try {\n"
+            + script
+            + "\n} catch { [Console]::Error.WriteLine($_); exit 1 }"
+        )
+        encoded_command = base64.b64encode(
+            command.encode("utf-16le")
+        ).decode("ascii")
         result = subprocess.run(
-            ["powershell.exe", "-NoProfile", "-NonInteractive", "-Command", "-"],
-            input="$ErrorActionPreference = 'Stop'\ntry {\n"
-                  + script
-                  + "\n} catch { [Console]::Error.WriteLine($_); exit 1 }",
+            [
+                "powershell.exe",
+                "-NoProfile",
+                "-NonInteractive",
+                "-EncodedCommand",
+                encoded_command,
+            ],
             capture_output=True,
             text=True,
         )
