@@ -18,7 +18,7 @@ class Scripts:
         """
     def GetTPM(self):
         return """
-        $tpm = Get-WmiObject -Namespace "Root\CIMv2\Security\MicrosoftTpm" -Class Win32_Tpm
+        $tpm = Get-CimInstance -Namespace "Root\CIMv2\Security\MicrosoftTpm" -Class Win32_Tpm
         if ($tpm) {
             [PSCustomObject]@{
                 IsEnabled = $tpm.IsEnabled()
@@ -69,14 +69,3 @@ class Scripts:
             Message = $logConfig.Message
         } | ConvertTo-Json -Depth 3
         """
-
-
-    def RunScripts(self):
-        self.GetNetFirewallProfile()
-        self.GetTPM()
-        self.CheckUserPrivileges()
-        self.CheckForMissingUpdates()
-        self.GetLoggingConfig()
-
-    def __init__(self):
-        
