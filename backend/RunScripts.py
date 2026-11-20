@@ -2,13 +2,41 @@ import json
 import subprocess
 import Scripts
 
-def RunScripts(self):
+
+def PrintData(value, indent=0):
+    prefix = " " * indent
+
+    if isinstance(value, dict):
+        if not value:
+            print(f"{prefix}(no fields)")
+            return
+
+        for key, item in value.items():
+            if isinstance(item, (dict, list)):
+                print(f"{prefix}{key}:")
+                PrintData(item, indent + 2)
+            else:
+                print(f"{prefix}{key}: {item}")
+    elif isinstance(value, list):
+        if not value:
+            print(f"{prefix}(no items)")
+            return
+
+        for index, item in enumerate(value, start=1):
+            print(f"{prefix}[{index}]")
+            PrintData(item, indent + 2)
+    else:
+        print(f"{prefix}{value}")
+
+
+def RunScripts():
+    script_provider = Scripts.Scripts()
     scripts = {
-        "Firewall profiles": Scripts.GetNetFirewallProfile(),
-        "TPM": Scripts.GetTPM(),
-        "User privileges": Scripts.CheckUserPrivileges(),
-        "Missing updates": Scripts.CheckForMissingUpdates(),
-        "System log": Scripts.GetLoggingConfig(),
+        "Firewall profiles": script_provider.GetNetFirewallProfile(),
+        "TPM": script_provider.GetTPM(),
+        "User privileges": script_provider.CheckUserPrivileges(),
+        "Missing updates": script_provider.CheckForMissingUpdates(),
+        "System log": script_provider.GetLoggingConfig(),
     }
 
     for name, script in scripts.items():
@@ -24,11 +52,24 @@ def RunScripts(self):
         )
 
         if result.returncode != 0:
-            print(f"PowerShell error:\n{result.stderr.strip()}")
+            error = result.stderr.strip() or f"PowerShell exited with code {result.returncode}."
+            print(f"PowerShell error:\n{error}")
             continue
 
         output = result.stdout.strip()
+        if not output:
+            print("(no output)")
+            continue
+
         try:
-            print(json.dumps(json.loads(output), indent=2))
-        except json.JSONDecodeError:
+            data = json.loads(output)
+        except json.JSONDecodeError as error:
+            print(f"Output was not valid JSON ({error}); raw output:")
             print(output or "(no output)")
+            continue
+
+        PrintData(data)
+
+
+if __name__ == "__main__":
+    RunScripts()
