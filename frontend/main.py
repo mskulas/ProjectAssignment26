@@ -1,8 +1,9 @@
 import json
 from pathlib import Path
+import UserInterface
 
 def main():
-    print("Running scripts...")
+    UserInterface.root.mainloop()
 
 
 if __name__ == "__main__":
