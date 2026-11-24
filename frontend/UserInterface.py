@@ -21,8 +21,7 @@ def runSystemCheck():
     if not checkRunning:
         checkRunning = True
         print("System check started...")
-        # Simulate a system check with a delay
-        root.after(2000, finishSystemCheck)  # Simulate a 2-second system check
+        RunScripts()
     else:
         print("System check is already running.")
 
@@ -45,6 +44,7 @@ root = Tk()
 frm = ttk.Frame(root, padding=10)
 frm.grid()
 ttk.Button(frm, text="Run System Check", command=lambda: runSystemCheck()).grid(column=0, row=0)
+
 firewallProfileLabel = ttk.Label(frm, text="Firewall Status").grid(column=0, row=1)
 tpmLabel = ttk.Label(frm, text="TPM Status").grid(column=0, row=2)
 userPrivilegesLabel = ttk.Label(frm, text="User Privileges").grid(column=0, row=3)
