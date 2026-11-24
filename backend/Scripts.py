@@ -1,5 +1,6 @@
 class Scripts:
-    def GetNetFirewallProfile(self):
+    @staticmethod
+    def GetNetFirewallProfile():
         return """
         $profiles = Get-NetFirewallProfile
         $profiles | ForEach-Object {
@@ -16,7 +17,8 @@ class Scripts:
             }
         } | ConvertTo-Json -Depth 3
         """
-    def GetTPM(self):
+    @staticmethod
+    def GetTPM():
         return """
         $tpm = Get-CimInstance -Namespace "Root\CIMv2\Security\MicrosoftTpm" -Class Win32_Tpm
         if ($tpm) {
@@ -32,7 +34,8 @@ class Scripts:
             Write-Output "TPM not found"
         }
         """
-    def CheckUserPrivileges(self):
+    @staticmethod
+    def CheckUserPrivileges():
         return """
         $user = [System.Security.Principal.WindowsIdentity]::GetCurrent()
         $principal = New-Object System.Security.Principal.WindowsPrincipal($user)
@@ -42,7 +45,8 @@ class Scripts:
             IsAdmin = $isAdmin
         } | ConvertTo-Json -Depth 3
         """
-    def CheckForMissingUpdates(self):
+    @staticmethod
+    def CheckForMissingUpdates():
         return """
         $updateSession = New-Object -ComObject Microsoft.Update.Session
         $updateSearcher = $updateSession.CreateUpdateSearcher()
@@ -58,7 +62,8 @@ class Scripts:
         }
         $updates | ConvertTo-Json -Depth 3
         """
-    def GetLoggingConfig(self):
+    @staticmethod
+    def GetLoggingConfig():
         return """
         $logConfig = Get-EventLog -LogName System -Newest 1
         [PSCustomObject]@{
@@ -69,13 +74,14 @@ class Scripts:
             Message = $logConfig.Message
         } | ConvertTo-Json -Depth 3
         """
-    def GetSystemEncryptionStatus(self):
+    @staticmethod
+    def GetSystemEncryptionStatus():
         return """
         $bitlockerStatus = Get-BitLockerVolume | Select-Object -Property MountPoint, VolumeStatus, EncryptionPercentage
         $bitlockerStatus | ConvertTo-Json -Depth 3
         """
-
-    def GetLocalUserSettings(self):
+    @staticmethod
+    def GetLocalUserSettings():
         return """
         $users = Get-LocalUser | ForEach-Object {
             [PSCustomObject]@{
