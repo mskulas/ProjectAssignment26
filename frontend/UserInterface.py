@@ -1,6 +1,18 @@
+from pathlib import Path
 from tkinter import *
 from tkinter import ttk
-from backend.RunScripts import RunScripts
+
+try:
+    # Package-style import: python -m frontend.main
+    from ..backend.RunScripts import RunScripts
+except ImportError:
+    # Script-style import: python frontend/main.py
+    import sys
+
+    project_root = Path(__file__).resolve().parent.parent
+    if str(project_root) not in sys.path:
+        sys.path.insert(0, str(project_root))
+    from backend.RunScripts import RunScripts
 
 checkRunning = False
 
