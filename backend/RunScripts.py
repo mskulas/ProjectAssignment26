@@ -2,7 +2,10 @@ import base64
 import json
 import subprocess
 from pathlib import Path
-from . import CheckScripts
+if __package__:
+    from . import CheckScripts
+else:
+    import CheckScripts
 
 
 def RunScripts():
