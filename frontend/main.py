@@ -1,2 +1,9 @@
+import json
+from pathlib import Path
+
 def main():
-    scripts = Scripts()
+    print("Running scripts...")
+
+
+if __name__ == "__main__":
+    main()
