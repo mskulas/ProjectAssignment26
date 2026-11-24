@@ -33,11 +33,11 @@ def finishSystemCheck():
 
 def itemPassed(label):
     label.config(foreground="green")
-    ttk.Label(frm, text="Passed").grid(column=1, row=label.grid_info()['row'])
+    ttk.Label(frm, text="Passed").grid(column=1, row=label.grid_info()['row'], sticky=E)
 
 def itemFailed(label):
     label.config(foreground="red")
-    ttk.Label(frm, text="Failed").grid(column=1, row=label.grid_info()['row'])
+    ttk.Label(frm, text="Failed").grid(column=1, row=label.grid_info()['row'], sticky=E)
 
 
 root = Tk()
@@ -45,12 +45,12 @@ frm = ttk.Frame(root, padding=10)
 frm.grid()
 ttk.Button(frm, text="Run System Check", command=lambda: runSystemCheck()).grid(column=0, row=0)
 
-firewallProfileLabel = ttk.Label(frm, text="Firewall Status").grid(column=0, row=1)
-tpmLabel = ttk.Label(frm, text="TPM Status").grid(column=0, row=2)
-userPrivilegesLabel = ttk.Label(frm, text="User Privileges").grid(column=0, row=3)
-missingUpdatesLabel = ttk.Label(frm, text="Missing Updates").grid(column=0, row=4)
-systemLogConfigLabel = ttk.Label(frm, text="System Log Configuration").grid(column=0, row=5)
-systemEncryptionLabel = ttk.Label(frm, text="System Encryption").grid(column=0, row=6)
-localUserSettingsLabel = ttk.Label(frm, text="Local User Settings").grid(column=0, row=7)
+firewallProfileLabel = ttk.Label(frm, text="Firewall Status").grid(column=0, row=1, sticky=W)
+tpmLabel = ttk.Label(frm, text="TPM Status").grid(column=0, row=2, sticky=W)
+userPrivilegesLabel = ttk.Label(frm, text="User Privileges").grid(column=0, row=3, sticky=W)
+missingUpdatesLabel = ttk.Label(frm, text="Missing Updates").grid(column=0, row=4, sticky=W)
+systemLogConfigLabel = ttk.Label(frm, text="System Log Configuration").grid(column=0, row=5, sticky=W)
+systemEncryptionLabel = ttk.Label(frm, text="System Encryption").grid(column=0, row=6, sticky=W)
+localUserSettingsLabel = ttk.Label(frm, text="Local User Settings").grid(column=0, row=7, sticky=W)
 
 root.mainloop()
