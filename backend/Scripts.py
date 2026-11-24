@@ -69,3 +69,24 @@ class Scripts:
             Message = $logConfig.Message
         } | ConvertTo-Json -Depth 3
         """
+    def GetSystemEncryptionStatus(self):
+        return """
+        $bitlockerStatus = Get-BitLockerVolume | Select-Object -Property MountPoint, VolumeStatus, EncryptionPercentage
+        $bitlockerStatus | ConvertTo-Json -Depth 3
+        """
+
+    def GetLocalUserSettings(self):
+        return """
+        $users = Get-LocalUser | ForEach-Object {
+            [PSCustomObject]@{
+                Name = $_.Name
+                Enabled = $_.Enabled
+                Description = $_.Description
+                LastLogon = $_.LastLogon
+                PasswordRequired = $_.PasswordRequired
+                PasswordChangeable = $_.PasswordChangeable
+                PasswordExpires = $_.PasswordExpires
+            }
+        }
+        $users | ConvertTo-Json -Depth 3
+        """

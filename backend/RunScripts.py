@@ -14,6 +14,8 @@ def RunScripts():
         "User privileges": script_provider.CheckUserPrivileges(),
         "Missing updates": script_provider.CheckForMissingUpdates(),
         "System log": script_provider.GetLoggingConfig(),
+        "System encryption": script_provider.GetSystemEncryptionStatus(),
+        "Local user settings": script_provider.GetLocalUserSettings(),
     }
     results = {}
 

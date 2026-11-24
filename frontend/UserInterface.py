@@ -38,5 +38,7 @@ tpmLabel = ttk.Label(frm, text="TPM Status").grid(column=0, row=2)
 userPrivilegesLabel = ttk.Label(frm, text="User Privileges").grid(column=0, row=3)
 missingUpdatesLabel = ttk.Label(frm, text="Missing Updates").grid(column=0, row=4)
 systemLogConfigLabel = ttk.Label(frm, text="System Log Configuration").grid(column=0, row=5)
+systemEncryptionLabel = ttk.Label(frm, text="System Encryption").grid(column=0, row=6)
+localUserSettingsLabel = ttk.Label(frm, text="Local User Settings").grid(column=0, row=7)
 
 root.mainloop()
