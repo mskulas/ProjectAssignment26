@@ -1,33 +1,9 @@
 import base64
 import json
 import subprocess
+from pathlib import Path
+
 import Scripts
-
-
-def PrintData(value, indent=0):
-    prefix = " " * indent
-
-    if isinstance(value, dict):
-        if not value:
-            print(f"{prefix}(no fields)")
-            return
-
-        for key, item in value.items():
-            if isinstance(item, (dict, list)):
-                print(f"{prefix}{key}:")
-                PrintData(item, indent + 2)
-            else:
-                print(f"{prefix}{key}: {item}")
-    elif isinstance(value, list):
-        if not value:
-            print(f"{prefix}(no items)")
-            return
-
-        for index, item in enumerate(value, start=1):
-            print(f"{prefix}[{index}]")
-            PrintData(item, indent + 2)
-    else:
-        print(f"{prefix}{value}")
 
 
 def RunScripts():
@@ -39,10 +15,9 @@ def RunScripts():
         "Missing updates": script_provider.CheckForMissingUpdates(),
         "System log": script_provider.GetLoggingConfig(),
     }
+    results = {}
 
     for name, script in scripts.items():
-        print(f"\n--- {name} ---")
-
         command = (
             "$ErrorActionPreference = 'Stop'\n"
             "$ProgressPreference = 'SilentlyContinue'\n"
@@ -67,22 +42,25 @@ def RunScripts():
 
         if result.returncode != 0:
             error = result.stderr.strip() or f"PowerShell exited with code {result.returncode}."
-            print(f"PowerShell error:\n{error}")
+            results[name] = {"error": error, "returncode": result.returncode}
             continue
 
         output = result.stdout.strip()
         if not output:
-            print("(no output)")
+            results[name] = None
             continue
 
         try:
-            data = json.loads(output)
+            results[name] = json.loads(output)
         except json.JSONDecodeError as error:
-            print(f"Output was not valid JSON ({error}); raw output:")
-            print(output or "(no output)")
-            continue
+            results[name] = {
+                "error": f"PowerShell returned invalid JSON: {error}",
+                "raw_output": output,
+            }
 
-        PrintData(data)
+    output_file = Path(__file__).with_name("RunScripts_output.json")
+    with output_file.open("w", encoding="utf-8") as file:
+        json.dump(results, file, indent=2, ensure_ascii=False)
 
 
 def main():

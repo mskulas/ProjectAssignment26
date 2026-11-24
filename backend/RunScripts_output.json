@@ -1,0 +1,59 @@
+{
+  "Firewall profiles": [
+    {
+      "Name": "Domain",
+      "Enabled": 1,
+      "DefaultInboundAction": 0,
+      "DefaultOutboundAction": 0,
+      "AllowInboundRules": 2,
+      "AllowLocalFirewallRules": 2,
+      "AllowLocalIPsecRules": 2,
+      "AllowUserApps": 2,
+      "AllowUserPorts": 2
+    },
+    {
+      "Name": "Private",
+      "Enabled": 1,
+      "DefaultInboundAction": 0,
+      "DefaultOutboundAction": 0,
+      "AllowInboundRules": 2,
+      "AllowLocalFirewallRules": 2,
+      "AllowLocalIPsecRules": 2,
+      "AllowUserApps": 2,
+      "AllowUserPorts": 2
+    },
+    {
+      "Name": "Public",
+      "Enabled": 1,
+      "DefaultInboundAction": 0,
+      "DefaultOutboundAction": 0,
+      "AllowInboundRules": 2,
+      "AllowLocalFirewallRules": 2,
+      "AllowLocalIPsecRules": 2,
+      "AllowUserApps": 2,
+      "AllowUserPorts": 2
+    }
+  ],
+  "TPM": {
+    "error": "Access denied",
+    "returncode": 1
+  },
+  "User privileges": {
+    "UserName": "EVILCOMPUTER\\angry",
+    "IsAdmin": false
+  },
+  "Missing updates": {
+    "Title": "Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.463.443.0) - Current Channel (Broad)",
+    "Description": "Install this update to revise the files that are used to detect viruses, spyware, and other potentially unwanted software. Once you have installed this item, it cannot be removed.",
+    "KBArticleIDs": "2267602",
+    "IsDownloaded": false,
+    "IsHidden": false
+  },
+  "System log": {
+    "LogName": null,
+    "Source": "Microsoft-Windows-Kernel-Power",
+    "EntryType": 4,
+    "TimeGenerated": "/Date(1795492120000)/",
+    "Message": "The description for Event ID '566' in Source 'Microsoft-Windows-Kernel-Power' cannot be found.  The local computer may not have the necessary registry information or message DLL files to display the message, or you may not have permission to access them.  The following information is part of the event:'106', '15', '1114', '2', '593818795', '18767', '28735', '18642', '28735', '1115', '0', 'false', '15'"
+  }
+}
