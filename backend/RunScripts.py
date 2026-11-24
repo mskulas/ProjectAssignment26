@@ -2,11 +2,11 @@ import base64
 import json
 import subprocess
 from pathlib import Path
-import Scripts
+import CheckScripts
 
 
 def RunScripts():
-    script_provider = Scripts.Scripts()
+    script_provider = CheckScripts.CheckScripts()
     scripts = {
         "Firewall profiles": script_provider.GetNetFirewallProfile(),
         "TPM": script_provider.GetTPM(),

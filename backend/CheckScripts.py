@@ -1,4 +1,4 @@
-class Scripts:
+class CheckScripts:
     @staticmethod
     def GetNetFirewallProfile():
         return """
