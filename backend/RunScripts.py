@@ -85,5 +85,9 @@ def RunScripts():
         PrintData(data)
 
 
-if __name__ == "__main__":
+def main():
     RunScripts()
+
+
+if __name__ == "__main__":
+    main()
