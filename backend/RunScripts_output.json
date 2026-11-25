@@ -1,0 +1,128 @@
+{
+  "Firewall profiles": [
+    {
+      "Name": "Domain",
+      "Enabled": 1,
+      "DefaultInboundAction": 0,
+      "DefaultOutboundAction": 0,
+      "AllowInboundRules": 2,
+      "AllowLocalFirewallRules": 2,
+      "AllowLocalIPsecRules": 2,
+      "AllowUserApps": 2,
+      "AllowUserPorts": 2
+    },
+    {
+      "Name": "Private",
+      "Enabled": 1,
+      "DefaultInboundAction": 0,
+      "DefaultOutboundAction": 0,
+      "AllowInboundRules": 2,
+      "AllowLocalFirewallRules": 2,
+      "AllowLocalIPsecRules": 2,
+      "AllowUserApps": 2,
+      "AllowUserPorts": 2
+    },
+    {
+      "Name": "Public",
+      "Enabled": 1,
+      "DefaultInboundAction": 0,
+      "DefaultOutboundAction": 0,
+      "AllowInboundRules": 2,
+      "AllowLocalFirewallRules": 2,
+      "AllowLocalIPsecRules": 2,
+      "AllowUserApps": 2,
+      "AllowUserPorts": 2
+    }
+  ],
+  "TPM": {
+    "error": "Access denied",
+    "returncode": 1
+  },
+  "User privileges": {
+    "UserName": "DESKTOP-SP5RK2B\\ethan",
+    "IsAdmin": false
+  },
+  "Missing updates": {
+    "Title": "Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.463.458.0) - Current Channel (Broad)",
+    "Description": "Install this update to revise the files that are used to detect viruses, spyware, and other potentially unwanted software. Once you have installed this item, it cannot be removed.",
+    "KBArticleIDs": "2267602",
+    "IsDownloaded": false,
+    "IsHidden": false
+  },
+  "System log": {
+    "LogName": null,
+    "Source": "Microsoft-Windows-Kernel-Processor-Power",
+    "EntryType": 2,
+    "TimeGenerated": "/Date(1795575242000)/",
+    "Message": "The speed of Hyper-V logical processor 11 is being limited by system firmware. The processor has been in this reduced performance state for 292674 seconds since the last report."
+  },
+  "System encryption": {
+    "error": "Access denied",
+    "returncode": 1
+  },
+  "Local user settings": [
+    {
+      "Name": "Admin",
+      "Enabled": true,
+      "Description": "",
+      "LastLogon": "/Date(1795203387275)/",
+      "PasswordRequired": false,
+      "PasswordChangeable": null,
+      "PasswordExpires": null
+    },
+    {
+      "Name": "Administrator",
+      "Enabled": false,
+      "Description": "Built-in account for administering the computer/domain",
+      "LastLogon": null,
+      "PasswordRequired": true,
+      "PasswordChangeable": null,
+      "PasswordExpires": null
+    },
+    {
+      "Name": "DefaultAccount",
+      "Enabled": false,
+      "Description": "A user account managed by the system.",
+      "LastLogon": null,
+      "PasswordRequired": false,
+      "PasswordChangeable": null,
+      "PasswordExpires": null
+    },
+    {
+      "Name": "ethan",
+      "Enabled": true,
+      "Description": "",
+      "LastLogon": null,
+      "PasswordRequired": true,
+      "PasswordChangeable": null,
+      "PasswordExpires": null
+    },
+    {
+      "Name": "Guest",
+      "Enabled": false,
+      "Description": "Built-in account for guest access to the computer/domain",
+      "LastLogon": null,
+      "PasswordRequired": false,
+      "PasswordChangeable": null,
+      "PasswordExpires": null
+    },
+    {
+      "Name": "WDAGUtilityAccount",
+      "Enabled": false,
+      "Description": "A user account managed and used by the system for Windows Defender Application Guard scenarios.",
+      "LastLogon": null,
+      "PasswordRequired": true,
+      "PasswordChangeable": null,
+      "PasswordExpires": null
+    },
+    {
+      "Name": "WsiAccount",
+      "Enabled": false,
+      "Description": "A user account managed and used by the system for Web Sign-in scenarios.",
+      "LastLogon": "/Date(1760026170425)/",
+      "PasswordRequired": false,
+      "PasswordChangeable": null,
+      "PasswordExpires": null
+    }
+  ]
+}
