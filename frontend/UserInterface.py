@@ -74,7 +74,7 @@ def runSystemCheck():
                             riskLevel += 1
                         elif  result.get("IsAdmin", True):
                             itemPassed(userPrivilegesLabel)
-                            suggestedChangesText += "User is an administrator. Use care when making changes to your system."
+                            suggestedChangesText += "User is an administrator. Use care when making changes to your system.\n"
                         else:
                             itemPassed(userPrivilegesLabel)
                     elif name == "Missing updates":

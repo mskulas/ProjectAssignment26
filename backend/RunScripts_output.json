@@ -35,12 +35,12 @@
     }
   ],
   "TPM": {
-    "error": "Access denied",
+    "error": "Method invocation failed because [Microsoft.Management.Infrastructure.CimInstance] does not contain a method named 'IsEnabled'.",
     "returncode": 1
   },
   "User privileges": {
-    "UserName": "DESKTOP-SP5RK2B\\ethan",
-    "IsAdmin": false
+    "UserName": "DESKTOP-SP5RK2B\\Admin",
+    "IsAdmin": true
   },
   "Missing updates": {
     "Title": "Security Intelligence Update for Microsoft Defender Antivirus - KB2267602 (Version 1.463.458.0) - Current Channel (Broad)",
@@ -57,15 +57,16 @@
     "Message": "The speed of Hyper-V logical processor 11 is being limited by system firmware. The processor has been in this reduced performance state for 292674 seconds since the last report."
   },
   "System encryption": {
-    "error": "Access denied",
-    "returncode": 1
+    "MountPoint": "C:",
+    "VolumeStatus": 0,
+    "EncryptionPercentage": 0
   },
   "Local user settings": [
     {
       "Name": "Admin",
       "Enabled": true,
       "Description": "",
-      "LastLogon": "/Date(1795203387275)/",
+      "LastLogon": "/Date(1795576259665)/",
       "PasswordRequired": false,
       "PasswordChangeable": null,
       "PasswordExpires": null
